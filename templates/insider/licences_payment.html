@@ -1,0 +1,30 @@
+{{extends "insider/action.html"}}
+{{block name="content"}}
+<h2>Kup/przedłuż licencję: {{$licence['name']}}</h2>
+
+Potwierdzenie złożenia zamówienia.
+ostateczne podsumowanie i przycisk do payU
+
+<form action="https://secure.payu.com/paygw/UTF/NewPayment" method="POST" name="payform">
+    Name: <input type="text" name="first_name" value="{{$request.name}}"><br/>
+    Surname: <input type="text" name="last_name" value=""><br/>
+    E-mail: <input type="text" name="email" value="{{$user_data.email}}"><br/>
+    <input type="hidden" name="pos_id" value="178893">
+    <input type="hidden" name="pos_auth_key" value="gQJQrgD">
+    <input type="hidden" name="session_id" value="Yy0cyTCtkbiR7LOpNzrkddZXkgbFbo6A.">
+    <input type="hidden" name="amount" value="1000">
+    <input type="hidden" name="desc" value="Opis płatności">
+    <input type="hidden" name="client_ip" value="123.123.123.123">
+    <input type="hidden" name="js" value="0">
+    <input type="hidden" name="ts" value="124321878">
+    <input type="hidden" name="sig" value="9920f89e75c6c47135a1f1357d0ad9f415fc8a990de8cfa428319ae3bb20c7d3">
+    <input type="submit" value="Zapłać poprzez PayU">
+</form>
+<script language="JavaScript" type="text/javascript">
+    <!--
+    document.forms['payform'].js.value=1;
+    -->
+</script>
+
+
+{{/block}}

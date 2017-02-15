@@ -1,0 +1,17 @@
+{{extends "insider/action.html"}}
+{{block name="content"}}
+<h2>Kup/przedłuż licencję: {{$licence['name']}}</h2>
+
+<form method="post">
+    Dane do faktury:<br/>
+    Nazwa: <input type="text" name="name" value=""><br/>
+    Adres rozliczeniowy: <input type="text" name="address" value=""><br/>
+    NIP: <input type="text" name="nip" value=""><br/><br/>
+
+    Wartość zamówienia: {{$licence.price}} zł<br/><br/>
+
+    <input type="submit" name="summary" value="Przejdź do podsumowania">
+</form>
+dane do płatności i informacja o produkcie <br />
+przycisk by przejść dalej<br/>
+{{/block}}

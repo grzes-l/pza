@@ -121,6 +121,10 @@
             }
 
             parent::__construct();
+
+            if($_REQUEST["user"] == "self")
+                unset($this->fields["user"]);
+
             if(access::has("edit(entitlements)"))
             {
                 $this->actions["/insider/entitlements/prolong?&"] = array("name" => "Przedłuż", "multiple" => true);
@@ -146,6 +150,15 @@
                 " WHERE t.deleted = 0 " . $filters .
                 ($selector ? (" AND r.id = " . vsql::quote($selector)) : "") .
                 ($family ? (" AND r.short REGEXP " . vsql::quote('^' . $family . "($|:.*$)")) : "");
+
+
+            $user = $_REQUEST["user"];
+            if($user)
+            {
+                if($user == "self") $user = access::getuid();
+                $query .= " AND t.user = " . vsql::quote($user);
+            }
+
 
             return $query;
         }
@@ -242,6 +255,7 @@
                          JOIN users AS u ON u.id = e.user
                          WHERE e.deleted = 0 AND ", "id", "ORDER BY ref", "ref");
         }
+
 
     }
 

@@ -1,0 +1,18 @@
+{{extends "insider/action.html"}}
+{{block name="content"}}
+<h2>Kup/przedłuż licencję: {{$licence['name']}}</h2>
+
+<h3>Dane do faktury</h3>
+Nazwa: {{$request.name}}<br/>
+Adres rozliczeniowy: {{$request.address}}<br/>
+NIP: {{$request.nip}}<br/>
+
+<h3>Wartość zamówienia: {{$licence.price}} zł</h3>
+
+<form method="post">
+    <input type="hidden" name="name" value="{{$request.name}}">
+    <input type="hidden" name="address" value="{{$request.address}}">
+    <input type="hidden" name="nip" value="{{$request.nip}}">
+    <input type="submit" name="payment" value="Potwierdzam i płacę">
+</form>
+{{/block}}

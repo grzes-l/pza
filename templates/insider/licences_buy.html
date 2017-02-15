@@ -1,0 +1,17 @@
+{{extends "insider/action.html"}}
+{{block name="content"}}
+<h2>Kup/przedłuż licencję</h2>
+
+<h3>Aktualnie posiadane licencje:</h3>
+{{include file="insider/licences_list_entitlements.html" entitlements=$entitlements.other}}
+
+<h3>Kup nową licencję:</h3>
+<form action="/insider/licences/proceed" method="get">
+    <select name="type">
+        {{foreach from=$licences item=i key=k}}
+        <option value="{{$k}}">{{$i.name}}</option>
+        {{/foreach}}
+    </select>
+    <input type="submit" name="buy" value="Przejdź dalej">
+</form>
+{{/block}}
